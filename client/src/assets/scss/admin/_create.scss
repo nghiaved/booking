@@ -1,0 +1,80 @@
+.create {
+    width: 1000px;
+    margin: 40px auto;
+
+    a {
+        display: block;
+        width: fit-content;
+        padding: 10px 20px;
+        background: $primary-color;
+        color: $white-color;
+        font-size: 24px;
+        font-weight: bold;
+        border-radius: 4px;
+    }
+
+    form {
+        margin-top: 40px;
+        width: 500px;
+        background: $second-color;
+        padding: 40px;
+
+        h2 {
+            color: $black-color;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            display: block;
+            margin: 20px 0;
+            border: 2px solid $black-color;
+            padding: 10px;
+            transition: .5s;
+            font-size: 20px;
+            border-radius: 4px;
+            width: 100%;
+
+            &:focus {
+                border: 2px solid $primary-color;
+            }
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        label {
+            border: 2px solid $black-color;
+            display: inline-block;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            color: $black-color;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        img {
+            display: block;
+            margin-bottom: 20px;
+            width: auto;
+            height: 160px;
+            object-fit: cover;
+            border: 2px solid $black-color;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: $primary-color;
+            color: $white-color;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 4px;
+
+            &:hover {
+                opacity: .8;
+                transition: .5s;
+            }
+        }
+    }
+}
