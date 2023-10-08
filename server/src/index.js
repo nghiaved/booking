@@ -27,13 +27,6 @@ app.use(bodyParser.urlencoded({
 }))
 
 //Cho phép client gửi yêu cầu tới server
-app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*')
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE')
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type')
-    res.setHeader('Access-Control-Allow-Credentials', true)
-    next()
-})
 app.use(cors())
 
 //Các tuyến đường
@@ -43,6 +36,6 @@ require('./routes/theater.route')(app)
 require('./routes/showtime.route')(app)
 
 //Mở cổng lắng nghe
-app.listen(7000, () => {
-    console.log(`Server's listening at http://localhost:7000`);
+app.listen(8080, () => {
+    console.log(`Server's listening at http://localhost:8080`);
 })

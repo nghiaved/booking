@@ -27,7 +27,7 @@ export default function RegisterPage() {
                         Đăng ký
                     </div>
                     <input required placeholder="Username" autoComplete="off" {...register('username', { required: true })} />
-                    <input required placeholder="Password" autoComplete="off" {...register('password', { required: true })} />
+                    <input type='password' required placeholder="Password" autoComplete="off" {...register('password', { required: true })} />
                     <button>
                         Đăng ký
                     </button>
@@ -38,7 +38,7 @@ export default function RegisterPage() {
                         Đã có tài khoản?
                         <Link to='/login'> Đăng nhập</Link>
                         <Link to='/'>
-                            <i class="fa-solid fa-house"></i>
+                            <i className="fa-solid fa-house"></i>
                         </Link>
                     </p>
                 </form>

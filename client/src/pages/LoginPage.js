@@ -28,7 +28,7 @@ export default function LoginPage() {
                         Đăng nhập
                     </div>
                     <input required placeholder="Username" autoComplete="off" {...register('username', { required: true })} />
-                    <input required placeholder="Password" autoComplete="off" {...register('password', { required: true })} />
+                    <input type='password' required placeholder="Password" autoComplete="off" {...register('password', { required: true })} />
                     <button>
                         Đăng nhập
                     </button>
@@ -39,7 +39,7 @@ export default function LoginPage() {
                         Tạo tài khoản?
                         <Link to='/register'> Đăng ký</Link>
                         <Link to='/'>
-                            <i class="fa-solid fa-house"></i>
+                            <i className="fa-solid fa-house"></i>
                         </Link>
                     </p>
                 </form>
