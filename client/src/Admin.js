@@ -1,7 +1,7 @@
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import NotFound from './pages/NotFound'
-import HomePage from './pages/admin/HomePage'
+import HomePage from './pages/admin'
 import Layout from './components/admin/Layout'
 import MovieCreate from './pages/admin/movie/Create'
 import MovieRead from './pages/admin/movie/Read'

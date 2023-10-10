@@ -2,7 +2,7 @@ import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
 import NotFound from './pages/NotFound'
-import HomePage from './pages/HomePage'
+import HomePage from './pages'
 
 function App() {
   return (

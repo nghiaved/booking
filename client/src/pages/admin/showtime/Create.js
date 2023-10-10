@@ -1,11 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import { apiShowtimeCreate } from '../../../services'
+import { apiMovieRead, apiTheaterRead, apiShowtimeCreate } from '../../../services'
 
 export default function Create() {
     const { register, handleSubmit } = useForm()
     const [message, setMessage] = useState()
+    const [movies, setMovies] = useState([])
+    const [theaters, setTheaters] = useState([])
+
+    useEffect(() => {
+        fetchData()
+    }, [])
+
+    const fetchData = async () => {
+        const resMovie = await apiMovieRead()
+        const resTheater = await apiTheaterRead()
+        setMovies(resMovie.movies)
+        setTheaters(resTheater.theaters)
+    }
 
     const onSubmit = async (data, e) => {
         try {
@@ -24,8 +37,12 @@ export default function Create() {
             <Link to='/admin/showtime'>Read</Link>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <h2>Create</h2>
-                <input required autoComplete="off" {...register('movie', { required: true })} placeholder='Movie' />
-                <input required autoComplete="off" {...register('theater', { required: true })} placeholder='Theater' />
+                <select {...register('movie', { required: true })}>
+                    {movies.map(item => <option key={item._id} value={item._id}>{item.title}</option>)}
+                </select>
+                <select {...register('theater', { required: true })}>
+                    {theaters.map(item => <option key={item._id} value={item._id}>{item.name}</option>)}
+                </select>
                 <input required autoComplete="off" {...register('datetime', { required: true })} placeholder='Datetime' />
                 <input required autoComplete="off" {...register('number', { required: true })} placeholder='Number' />
                 <p>{message && message} </p>

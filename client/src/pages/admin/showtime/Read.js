@@ -28,8 +28,8 @@ export default function Read() {
                 <thead>
                     <tr>
                         <th>STT</th>
-                        <th>Name</th>
-                        <th>Title</th>
+                        <th>Movie</th>
+                        <th>Theater</th>
                         <th>Datetime</th>
                         <th>Number</th>
                         <th>Update</th>
@@ -40,8 +40,8 @@ export default function Read() {
                     {showtimes.length > 0 ? showtimes.map((item, index) =>
                         <tr key={item._id}>
                             <td>{++index}</td>
-                            <td>{item.movie.title}</td>
-                            <td>{item.theater.name}</td>
+                            <td>{item.movie && item.movie.title}</td>
+                            <td>{item.theater && item.theater.name}</td>
                             <td>{item.datetime}</td>
                             <td>{item.number}</td>
                             <td>
