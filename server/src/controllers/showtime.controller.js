@@ -31,6 +31,26 @@ const showtimeController = {
             .then(showtime => res.json({ showtime }))
             .catch(next)
     },
+
+    handleSearchMovie: (req, res, next) => {
+        showtimeModel.find({ 'movie': req.query._id })
+            .populate("movie", '-image')
+            .populate("theater", '-image')
+            .then(showtimes => res.status(200).json({
+                showtimes
+            }))
+            .catch(next)
+    },
+
+    handleSearchTheater: (req, res, next) => {
+        showtimeModel.find({ 'theater': req.query._id })
+            .populate("movie", '-image')
+            .populate("theater", '-image')
+            .then(showtimes => res.status(200).json({
+                showtimes
+            }))
+            .catch(next)
+    }
 }
 
 module.exports = showtimeController

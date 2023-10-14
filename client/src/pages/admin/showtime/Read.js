@@ -30,7 +30,8 @@ export default function Read() {
                         <th>STT</th>
                         <th>Movie</th>
                         <th>Theater</th>
-                        <th>Datetime</th>
+                        <th>Date</th>
+                        <th>Time</th>
                         <th>Number</th>
                         <th>Update</th>
                         <th>Delete</th>
@@ -42,7 +43,8 @@ export default function Read() {
                             <td>{++index}</td>
                             <td>{item.movie && item.movie.title}</td>
                             <td>{item.theater && item.theater.name}</td>
-                            <td>{item.datetime}</td>
+                            <td>{item.date}</td>
+                            <td>{item.time}</td>
                             <td>{item.number}</td>
                             <td>
                                 <Link to='/admin/showtime/update' state={item}>

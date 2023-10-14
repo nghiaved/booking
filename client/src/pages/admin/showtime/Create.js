@@ -43,7 +43,8 @@ export default function Create() {
                 <select {...register('theater', { required: true })}>
                     {theaters.map(item => <option key={item._id} value={item._id}>{item.name}</option>)}
                 </select>
-                <input required autoComplete="off" {...register('datetime', { required: true })} placeholder='Datetime' />
+                <input required autoComplete="off" {...register('date', { required: true })} placeholder='Date' />
+                <input required autoComplete="off" {...register('time', { required: true })} placeholder='Time' />
                 <input required autoComplete="off" {...register('number', { required: true })} placeholder='Number' />
                 <p>{message && message} </p>
                 <button type='submit'>Create</button>

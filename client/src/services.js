@@ -54,3 +54,9 @@ export const apiShowtimeUpdate = data =>
 
 export const apiShowtimeDelete = id =>
     axiosClient.delete('/api/showtime/delete/' + id)
+
+export const apiShowtimeSearchMovies = id =>
+    axiosClient.get('/api/showtime/search/movie?_id=' + id)
+
+export const apiShowtimeSearchTheaters = id =>
+    axiosClient.get('/api/showtime/search/theater?_id=' + id)

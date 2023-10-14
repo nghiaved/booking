@@ -34,6 +34,7 @@ export default function Create() {
                 <h2>Create</h2>
                 <input required autoComplete="off" {...register('title', { required: true })} placeholder='Title' />
                 <input required autoComplete="off" {...register('time', { required: true })} placeholder='Time' />
+                <input required autoComplete="off" {...register('date', { required: true })} placeholder='Date' />
                 <label>
                     <FileBase64
                         multiple={false}

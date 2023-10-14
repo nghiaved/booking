@@ -18,14 +18,14 @@ export default function Header() {
                 <div className='top-container'>
                     <div className='item-left'>
                         <div className='left-item'>
-                            <Link target="_blank" to='https://www.facebook.com/nghiaved'>
+                            <Link target="_blank" to='https://www.facebook.com/'>
                                 <i className="fa-brands fa-square-facebook"></i>
                                 Facebook
                             </Link>
                         </div>
                         <div className='left-item'>
 
-                            <Link target="_blank" to='https://github.com/nghiaved'>
+                            <Link target="_blank" to='https://github.com/'>
                                 <i className="fa-brands fa-square-github"></i>
                                 GitHub
                             </Link>
@@ -69,11 +69,6 @@ export default function Header() {
                     </div>
                 </div>
             </div>
-            <div className='header-logo'>
-                <Link to='/'>
-                    <img src={logoHeader} alt='' />
-                </Link>
-            </div>
             <div className='header-main'>
                 <div className='item'>
                     <NavLink to='/'>
@@ -81,17 +76,17 @@ export default function Header() {
                     </NavLink>
                 </div>
                 <div className='item'>
-                    <NavLink to='/ve'>
+                    <NavLink to='/showtimes'>
                         Mua vé
                     </NavLink>
                 </div>
                 <div className='item'>
-                    <NavLink to='/phim'>
+                    <NavLink to='/movies'>
                         Phim
                     </NavLink>
                 </div>
                 <div className='item'>
-                    <NavLink to='/rap'>
+                    <NavLink to='/theaters'>
                         Rạp chiếu phim
                     </NavLink>
                 </div>

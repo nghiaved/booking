@@ -5,7 +5,8 @@ const Schema = mongoose.Schema
 const showtimeSchema = new Schema({
     movie: { type: mongoose.Schema.Types.ObjectId, ref: "movie" },
     theater: { type: mongoose.Schema.Types.ObjectId, ref: "theater" },
-    datetime: String,
+    date: String,
+    time: String,
     number: Number,
 })
 

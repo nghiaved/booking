@@ -9,6 +9,8 @@ const showtimeRoute = app => {
     router.get('/read', showtimeController.handleRead)
     router.put('/update/:id', showtimeController.handleUpdate)
     router.delete('/delete/:id', showtimeController.handleDelete)
+    router.get('/search/movie', showtimeController.handleSearchMovie)
+    router.get('/search/theater', showtimeController.handleSearchTheater)
 
     return app.use('/api/showtime', router)
 }

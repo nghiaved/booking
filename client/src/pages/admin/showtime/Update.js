@@ -46,18 +46,19 @@ export default function Update() {
                 <select {...register('movie', { required: true })}>
                     {movies.map(item =>
                         item._id === showtime.movie._id
-                            ? <option selected key={item._id} value={item._id}>{item.title}</option>
+                            ? <option defaultChecked key={item._id} value={item._id}>{item.title}</option>
                             : <option key={item._id} value={item._id}>{item.title}</option>
                     )}
                 </select>
                 <select {...register('theater', { required: true })}>
                     {theaters.map(item =>
                         item._id === showtime.theater._id
-                            ? <option selected key={item._id} value={item._id}>{item.name}</option>
+                            ? <option defaultChecked key={item._id} value={item._id}>{item.name}</option>
                             : <option key={item._id} value={item._id}>{item.name}</option>
                     )}
                 </select>
-                <input defaultValue={showtime.datetime} required autoComplete="off" {...register('datetime', { required: true })} placeholder='Datetime' />
+                <input defaultValue={showtime.date} required autoComplete="off" {...register('date', { required: true })} placeholder='Date' />
+                <input defaultValue={showtime.time} required autoComplete="off" {...register('time', { required: true })} placeholder='Time' />
                 <input defaultValue={showtime.number} required autoComplete="off" {...register('number', { required: true })} placeholder='Number' />
                 <p>{message && message} </p>
                 <button type='submit'>Update</button>

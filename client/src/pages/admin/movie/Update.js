@@ -39,6 +39,7 @@ export default function Update() {
                 <h2>Update</h2>
                 <input required autoComplete="off" defaultValue={movie.title} {...register('title', { required: true })} placeholder='Title' />
                 <input required autoComplete="off" defaultValue={movie.time} {...register('time', { required: true })} placeholder='Time' />
+                <input required autoComplete="off" defaultValue={movie.date} {...register('date', { required: true })} placeholder='Date' />
                 <label>
                     <FileBase64
                         multiple={false}

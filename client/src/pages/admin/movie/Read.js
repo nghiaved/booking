@@ -30,6 +30,7 @@ export default function Read() {
                         <th>STT</th>
                         <th>Title</th>
                         <th>Time</th>
+                        <th>Date</th>
                         <th>Image</th>
                         <th>Update</th>
                         <th>Delete</th>
@@ -41,6 +42,7 @@ export default function Read() {
                             <td>{++index}</td>
                             <td>{item.title}</td>
                             <td>{item.time}</td>
+                            <td>{item.date}</td>
                             <td>
                                 <img src={item.image} alt='' />
                             </td>
