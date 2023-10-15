@@ -57,7 +57,7 @@ export default function Read() {
                         </tr>
                     ) :
                         <tr>
-                            <td colSpan='7'>Không có dữ liệu</td>
+                            <td colSpan='8'>Không có dữ liệu</td>
                         </tr>
                     }
                 </tbody>

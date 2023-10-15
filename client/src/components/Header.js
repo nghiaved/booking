@@ -1,6 +1,5 @@
 import React from 'react'
 import { NavLink, Link } from 'react-router-dom'
-import { logoHeader } from '../assets/img'
 
 export default function Header() {
     const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'))
@@ -51,7 +50,7 @@ export default function Header() {
                                         {userInfo && userInfo.username}
                                         <div className='user-action'>
                                             <div className='item'>
-                                                <Link to=''>Giỏ hàng</Link>
+                                                <Link to='/cart'>Giỏ hàng</Link>
                                             </div>
                                             {userInfo && userInfo.username === 'admin' &&
                                                 <Link to='/admin/' className='item'>Quản lý</Link>

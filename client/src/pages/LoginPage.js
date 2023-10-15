@@ -7,15 +7,20 @@ export default function LoginPage() {
     const { register, handleSubmit } = useForm()
     const [errMessage, setErrMessage] = useState()
 
+    //Hàm xử lý đăng nhập
     const onSubmit = async data => {
         try {
+            //Nhận dữ liệu từ form đăng nhập sau đó gọi API tới server
             const res = await apiUserLogin(data)
             if (res && res.status === true) {
+                //Nếu thành công lưu lại thông tin đăng nhập
                 localStorage.setItem('isLoggedIn', res.status)
                 localStorage.setItem('userInfo', JSON.stringify(res.userInfo))
+                //Trở về trang chủ
                 window.location.href = '/'
             }
         } catch (e) {
+            //Nếu thất bại thông báo lỗi
             setErrMessage(e.message)
         }
     }

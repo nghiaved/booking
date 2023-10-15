@@ -15,6 +15,7 @@ import ShowtimeUpdate from './pages/admin/showtime/Update'
 
 export default function Admin() {
     return (
+        //Nếu chưa đăng nhập thì không được vào quản lý
         JSON.parse(localStorage.getItem('isLoggedIn')) === true
             ?
             <Layout>

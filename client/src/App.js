@@ -8,6 +8,8 @@ import Theaters from './pages/Theaters'
 import Showtimes from './pages/Showtimes'
 import MovieDetail from './pages/MovieDetail'
 import TheaterDetail from './pages/TheaterDetail'
+import Cart from './pages/Cart'
+import Checkout from './pages/Checkout'
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route path='/movie/:id' element={<MovieDetail />} />
         <Route path='/theaters' element={<Theaters />} />
         <Route path='/theater/:id' element={<TheaterDetail />} />
+        <Route path='/cart' element={<Cart />} />
+        <Route path='/checkout' element={<Checkout />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </Layout>

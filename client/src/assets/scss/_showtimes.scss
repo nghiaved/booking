@@ -3,6 +3,19 @@
     flex-wrap: wrap;
     margin: 0 -16px;
 
+    .pay {
+        display: block;
+        text-align: center;
+        width: 100%;
+
+        span {
+            color: #a88300;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
+
     .item-wrapper {
         flex: 25%;
         max-width: 25%;
@@ -24,6 +37,12 @@
                 justify-content: center;
                 gap: 10px;
 
+                &.danger {
+                    .cart {
+                        color: red;
+                    }
+                }
+
                 .cart {
                     text-decoration: none;
                     color: #a88300;
@@ -44,6 +63,24 @@
                         cursor: pointer;
                     }
                 }
+            }
+        }
+    }
+
+    .exist {
+        width: 100%;
+        text-align: center;
+        font-size: 36px;
+        font-weight: bold;
+        color: #cdc197;
+        margin: 20vh 0;
+
+        a {
+            margin-left: 20px;
+            color: black;
+
+            &:hover {
+                color: #cdc197;
             }
         }
     }

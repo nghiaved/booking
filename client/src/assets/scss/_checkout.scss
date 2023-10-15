@@ -1,0 +1,97 @@
+.order-wrapper {
+    margin: 20px 0;
+    padding: 40px;
+    border-radius: 4px;
+    background: #efebdb;
+
+    .title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .form-checkout {
+        display: flex;
+        gap: 20px;
+
+        .info {
+            flex: 1;
+
+            .group-input {
+                display: flex;
+                justify-content: space-between;
+                gap: 10px;
+            }
+
+            label {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+
+                span {
+                    font-size: 14px;
+                    display: block;
+                    margin-bottom: 10px;
+                }
+
+                input {
+                    margin-bottom: 20px;
+                    border: 2px solid black;
+                    padding: 10px;
+                    transition: .5s;
+                    font-size: 18px;
+                    border-radius: 4px;
+                    width: 100%;
+
+                    &:focus {
+                        border: 2px solid #767336;
+                    }
+                }
+            }
+        }
+
+        .note {
+            flex: 1;
+            width: 100%;
+
+            span {
+                font-size: 14px;
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            textarea {
+                border: 2px solid black;
+                padding: 10px;
+                transition: .5s;
+                font-size: 18px;
+                border-radius: 4px;
+                width: 100%;
+
+                &:focus {
+                    outline: none;
+                    border: 2px solid #767336;
+                }
+            }
+        }
+    }
+
+    .btn-checkout {
+        font-size: 18px;
+        font-weight: bold;
+        color: black;
+        background: white;
+        width: fit-content;
+        border: 2px solid #767336;
+        border-radius: 10px;
+        padding: 10px 20px;
+        margin-top: 20px;
+
+        &:hover {
+            background: #767336;
+            color: white;
+            cursor: pointer;
+            transition: .5s;
+        }
+    }
+}

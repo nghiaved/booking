@@ -10,7 +10,9 @@ function Theaters({ isHome }) {
     }, [])
 
     const fetchData = async () => {
+        //Lấy ra tất cả rạp
         const res = await apiTheaterRead()
+        //Nếu nằm ở trang chủ thì hiện 3 rạp
         setTheaters(isHome ? res.theaters.slice(0, 3) : res.theaters)
     }
 

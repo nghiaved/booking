@@ -10,7 +10,9 @@ function Movies({ isHome }) {
     }, [])
 
     const fetchData = async () => {
+        //Lấy ra tất cả phim
         const res = await apiMovieRead()
+        //Nếu nằm ở trang chủ thì hiện 4 phim
         setMovies(isHome ? res.movies.slice(0, 4) : res.movies)
     }
 

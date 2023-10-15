@@ -77,7 +77,7 @@ export default function Home() {
                         </tr>
                     ) :
                         <tr>
-                            <td colSpan='7'>Không có dữ liệu</td>
+                            <td colSpan='8'>Không có dữ liệu</td>
                         </tr>
                     }
                 </tbody>
@@ -89,6 +89,7 @@ export default function Home() {
                         <th>STT</th>
                         <th>Title</th>
                         <th>Time</th>
+                        <th>Date</th>
                         <th>Image</th>
                         <th>Update</th>
                         <th>Delete</th>
@@ -100,6 +101,7 @@ export default function Home() {
                             <td>{++index}</td>
                             <td>{item.title}</td>
                             <td>{item.time}</td>
+                            <td>{item.date}</td>
                             <td>
                                 <img src={item.image} alt='' />
                             </td>

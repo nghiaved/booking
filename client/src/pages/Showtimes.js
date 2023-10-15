@@ -3,6 +3,8 @@ import { apiShowtimeRead } from '../services'
 
 function Showtimes() {
     const [showtimes, setShowtimes] = useState([])
+    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || [])
+    const [cartId, setCartId] = useState(JSON.parse(localStorage.getItem('cartId')) || [])
 
     useEffect(() => {
         fetchData()
@@ -13,10 +15,13 @@ function Showtimes() {
         setShowtimes(res.showtimes)
     }
 
+    localStorage.setItem('cart', JSON.stringify(cart))
+    localStorage.setItem('cartId', JSON.stringify(cartId))
+
     return (
         <div className="showtime-wrapper">
-            {showtimes && showtimes.map(item =>
-                <div key={item._id} className="item-wrapper">
+            {showtimes && showtimes.map(item => {
+                return <div key={item._id} className="item-wrapper">
                     <div className="item">
                         <div className="row">
                             Phim:
@@ -47,14 +52,32 @@ function Showtimes() {
                             <h5>
                                 {item.number} / {item.number}
                             </h5>
+                            <input disabled={cartId.includes(item._id) ? true : false} type='number' onChange={e => {
+                                item.quantity = e.target.value
+                            }} defaultValue='1' min='1' max='99' />
                         </div>
-                        <div className="feature">
+
+                        <div className={!cartId.includes(item._id) ? 'feature' : 'feature danger'}>
                             <div onClick={() => {
-                                alert('Đã thêm vé vào giỏ hàng!')
-                            }} className='cart'>Thêm</div>
+                                //Đăng nhập xong mới được thêm vé vào giỏ hàng nếu không chuyển sang trang đăng nhập
+                                if (JSON.parse(localStorage.getItem('isLoggedIn')) === true) {
+                                    if (!cartId.includes(item._id)) {
+                                        //Thêm vé vào giỏ hàng
+                                        setCartId([...cartId, item._id])
+                                        setCart([...cart, { ...item, quantity: item.quantity }])
+                                    } else {
+                                        //Xoá vé ra khỏi giỏ hàng
+                                        setCartId(cartId.filter(el => el !== item._id))
+                                        setCart(cart.filter(el => el._id !== item._id))
+                                    }
+                                } else {
+                                    window.location.href = '/login'
+                                }
+                            }} className='cart'>{!cartId.includes(item._id) ? 'Thêm' : 'Xoá'}</div>
                         </div>
                     </div>
-                </div>)
+                </div>
+            })
             }
         </div>
     );
