@@ -10,13 +10,16 @@ export default function Read() {
     }, [])
 
     const fetchData = async () => {
-        const res = await apiMovieRead()
-        setMovies(res.movies)
+        const data = await apiMovieRead()
+        setMovies(data.movies)
     }
 
     const deleteMovie = async id => {
-        if (window.confirm("Delete")) {
+        // Xác nhận xoá
+        if (window.confirm("Bạn có chắc chắn muốn vĩnh viễn")) {
+            // Xử lý xoá phim
             await apiMovieDelete(id)
+            // Gọi lại lấy danh sách phim sau khi xoá
             fetchData()
         }
     }
@@ -38,6 +41,9 @@ export default function Read() {
                 </thead>
                 <tbody>
                     {movies.length > 0 ? movies.map((item, index) =>
+                        // for(i; i < movies.length; i++) {
+                        //     movies[i] = item
+                        // }
                         <tr key={item._id}>
                             <td>{++index}</td>
                             <td>{item.title}</td>
@@ -47,6 +53,7 @@ export default function Read() {
                                 <img src={item.image} alt='' />
                             </td>
                             <td>
+                                {/* the Link = thẻ a */}
                                 <Link to='/admin/movie/update' state={item}>
                                     <i className="fa-solid fa-pen btn-edit"></i>
                                 </Link>

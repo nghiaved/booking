@@ -44,8 +44,10 @@ export default function Home() {
                 <i onClick={() => nextSlideImage()} className="fa-solid fa-chevron-right"></i>
             </div>
             <div className='separate'></div>
+            {/* Danh sách phim ở trang chủ thì hiện 4 phim */}
             <Movies isHome={true} />
             <div className='separate'></div>
+            {/* Danh sách rạp ở trang chủ thì hiện 3 phim */}
             <Theaters isHome={true} />
             <div className='separate'></div>
         </div>

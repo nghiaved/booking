@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
-import { apiShowtimeSearchMovies } from '../services'
+import { useLocation, Link } from 'react-router-dom'
+import { apiShowtimeSearchMovies, apiShowtimeUpdate } from '../services'
 
 function MovieDetail() {
     const [showtimes, setShowtimes] = useState([])
@@ -27,8 +27,8 @@ function MovieDetail() {
 
     return (
         <div className="showtime-wrapper">
-            {showtimes && showtimes.length > 0 ? showtimes.map(item =>
-                <div key={item._id} className="item-wrapper">
+            {showtimes && showtimes.length > 0 ? showtimes.map(item => {
+                return <div key={item._id} className="item-wrapper">
                     <div className="item">
                         <div className="row">
                             Phim:
@@ -57,24 +57,32 @@ function MovieDetail() {
                         <div className="row">
                             Số vé:
                             <h5>
-                                {item.number} / {item.number}
+                                {item.quantity ? item.number - item.quantity : item.number} / {item.number}
                             </h5>
-                            <input disabled={cartId.includes(item._id) ? true : false} type='number' onChange={e => {
+                            <input disabled={cartId.includes(item._id) ? true : false} type='number' onChange={async e => {
                                 item.quantity = e.target.value
-                            }} defaultValue='1' min='1' max='99' />
+                                await apiShowtimeUpdate(item)
+                            }} defaultValue={item.quantity ? item.quantity : 1} min='1' max='99' />
                         </div>
+
                         <div className={!cartId.includes(item._id) ? 'feature' : 'feature danger'}>
-                            <div onClick={() => {
+                            <div onClick={async () => {
                                 //Đăng nhập xong mới được thêm vé vào giỏ hàng nếu không chuyển sang trang đăng nhập
                                 if (JSON.parse(localStorage.getItem('isLoggedIn')) === true) {
                                     if (!cartId.includes(item._id)) {
+                                        if (!item.quantity)
+                                            item.quantity = 1
                                         //Thêm vé vào giỏ hàng
+                                        await apiShowtimeUpdate(item)
                                         setCartId([...cartId, item._id])
                                         setCart([...cart, { ...item, quantity: item.quantity }])
                                     } else {
                                         //Xoá vé ra khỏi giỏ hàng
+                                        item.quantity = 0
+                                        await apiShowtimeUpdate(item)
                                         setCartId(cartId.filter(el => el !== item._id))
                                         setCart(cart.filter(el => el._id !== item._id))
+                                        window.location.href = '/movie/' + id
                                     }
                                 } else {
                                     window.location.href = '/login'
@@ -82,8 +90,11 @@ function MovieDetail() {
                             }} className='cart'>{!cartId.includes(item._id) ? 'Thêm' : 'Xoá'}</div>
                         </div>
                     </div>
-                </div>) :
-                <div className='exist'>Hiện tại chưa có xuất chiếu</div>
+                </div>
+            }) : <div className='exist'>
+                Hiện tại chưa có xuất chiếu
+                <Link to={`/movies`}>Phim</Link>
+            </div>
             }
         </div>
     );

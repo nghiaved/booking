@@ -8,6 +8,8 @@ const showtimeSchema = new Schema({
     date: String,
     time: String,
     number: Number,
+    quantity: Number,
+    remaining: Number,
 })
 
 module.exports = mongoose.model('showtime', showtimeSchema)

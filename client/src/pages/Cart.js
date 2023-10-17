@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 function Cart() {
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || [])
     const [cartId, setCartId] = useState(JSON.parse(localStorage.getItem('cartId')) || [])
+    // Tính tổng giá tiền
     const total = cart && cart.length > 0 && cart.reduce(function (total, item) {
         return total + 100 * (item.quantity || 1)
     }, 0)
@@ -30,9 +31,15 @@ function Cart() {
                             </h5>
                         </div>
                         <div className="row">
-                            Thời gian:
+                            Ngày:
                             <h5>
-                                {item.datetime}
+                                {item.date}
+                            </h5>
+                        </div>
+                        <div className="row">
+                            Giờ:
+                            <h5>
+                                {item.time}
                             </h5>
                         </div>
                         <div className="row">
@@ -49,7 +56,7 @@ function Cart() {
                         </div>
                         <div className="feature">
                             <button onClick={() => {
-                                //Xoá vé ra khỏi giỏ hàngß
+                                //Xoá vé ra khỏi giỏ hàng
                                 if (window.confirm("Xóa vĩnh viễn?")) {
                                     setCartId(cartId.filter(el => el !== item._id))
                                     setCart(cart.filter(el => el._id !== item._id))

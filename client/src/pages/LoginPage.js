@@ -9,6 +9,7 @@ export default function LoginPage() {
 
     //Hàm xử lý đăng nhập
     const onSubmit = async data => {
+        console.log(data);
         try {
             //Nhận dữ liệu từ form đăng nhập sau đó gọi API tới server
             const res = await apiUserLogin(data)

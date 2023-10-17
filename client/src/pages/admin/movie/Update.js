@@ -6,6 +6,7 @@ import { apiMovieUpdate } from '../../../services'
 
 export default function Update() {
     const location = useLocation()
+    // movie = thông tin của phim cần sửa
     const movie = location.state
 
     const { register, handleSubmit } = useForm()
@@ -37,10 +38,12 @@ export default function Update() {
             <Link to='/admin/movie'>Read</Link>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <h2>Update</h2>
+                {/* Đặt giá trị mặc định của input là giá trị ban đầu của phim */}
                 <input required autoComplete="off" defaultValue={movie.title} {...register('title', { required: true })} placeholder='Title' />
                 <input required autoComplete="off" defaultValue={movie.time} {...register('time', { required: true })} placeholder='Time' />
                 <input required autoComplete="off" defaultValue={movie.date} {...register('date', { required: true })} placeholder='Date' />
                 <label>
+                    {/* Xử lý chuyển ảnh thành chuỗi */}
                     <FileBase64
                         multiple={false}
                         onDone={({ base64 }) => {
@@ -49,7 +52,9 @@ export default function Update() {
                     />
                     Ảnh
                 </label>
+                {/* Preview ảnh lúc tạo/ sửa */}
                 {image && <img src={image} alt='' />}
+                {/* Thông báo thành công/thất bại */}
                 <p>{message && message} </p>
                 <button type='submit'>Update</button>
             </form>
