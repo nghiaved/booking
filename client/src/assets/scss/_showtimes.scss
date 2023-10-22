@@ -36,6 +36,12 @@
                 display: flex;
                 justify-content: center;
                 gap: 10px;
+                color: #a88300;
+
+                a {
+                    color: #a88300;
+                    text-decoration: none;
+                }
 
                 &.danger {
                     .cart {

@@ -26,13 +26,13 @@ function Showtimes() {
                         <div className="row">
                             Phim:
                             <h5>
-                                {item.movie.title}
+                                {item.movie && item.movie.title}
                             </h5>
                         </div>
                         <div className="row">
                             Rạp:
                             <h5>
-                                {item.theater.name}
+                                {item.theater && item.theater.name}
                             </h5>
                         </div>
                         <div className="row">
