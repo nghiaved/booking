@@ -1,16 +1,37 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { apiCartRead, apiCartDelete } from '../services'
 
 function Cart() {
-    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || [])
+    const [cart, setCart] = useState([])
     const [cartId, setCartId] = useState(JSON.parse(localStorage.getItem('cartId')) || [])
-    // Tính tổng giá tiền
-    const total = cart && cart.length > 0 && cart.reduce(function (total, item) {
-        return total + 100 * (item.quantity || 1)
-    }, 0)
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'))
 
-    //Lưu thông tin giỏ hàng
-    localStorage.setItem('cart', JSON.stringify(cart))
+    useEffect(() => {
+        fetchData()
+    }, [])
+
+    const fetchData = async () => {
+        const res = await apiCartRead(userInfo._id)
+        setCart(res.carts)
+    }
+
+    // Tính tổng giá tiền
+    const calTotal = () => {
+        const value = cart.reduce(function (total, num) {
+            return total + (num.quantity || 1) * 100000
+        }, 0)
+        let price = value.toString().split('').reverse()
+        let priceEnd = ''
+        price.map((item, index) => {
+            if (++index % 3 == 0 && index != price.length) {
+                item += '.'
+            }
+            priceEnd += item
+        })
+        return priceEnd.split('').reverse().join('')
+    }
+
     localStorage.setItem('cartId', JSON.stringify(cartId))
 
     return (
@@ -55,11 +76,12 @@ function Cart() {
                             </h5>
                         </div>
                         <div className="feature">
-                            <button onClick={() => {
+                            <button onClick={async () => {
                                 //Xoá vé ra khỏi giỏ hàng
                                 if (window.confirm("Xóa vĩnh viễn?")) {
+                                    await apiCartDelete(item._id)
                                     setCartId(cartId.filter(el => el !== item._id))
-                                    setCart(cart.filter(el => el._id !== item._id))
+                                    fetchData()
                                 }
                             }}>
                                 <i className='fas fa-trash'></i>
@@ -77,7 +99,7 @@ function Cart() {
                 <span onClick={() => {
                     // Chuyển tiếp sang trang thanh toán
                     window.location.href = '/checkout'
-                }}>Đặt vé ( {total}.000đ )</span>
+                }}>Đặt vé ( {calTotal()}đ )</span>
             </div>}
         </div>
     );

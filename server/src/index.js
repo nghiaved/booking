@@ -34,6 +34,7 @@ require('./routes/user.route')(app)
 require('./routes/movie.route')(app)
 require('./routes/theater.route')(app)
 require('./routes/showtime.route')(app)
+require('./routes/cart.route')(app)
 
 //Mở cổng lắng nghe
 app.listen(8080, () => {

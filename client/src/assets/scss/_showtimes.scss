@@ -45,7 +45,12 @@
 
                 &.danger {
                     .cart {
-                        color: red;
+                        color: #888;
+
+                        &:hover {
+                            color: #888;
+                            cursor: unset;
+                        }
                     }
                 }
 

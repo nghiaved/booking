@@ -34,6 +34,8 @@ export default function Read() {
                             <Link to='/admin/theater/update' state={item}>Edit</Link>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <Link onClick={() => deleteTheater(item._id)}>Delete</Link>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <Link to={`/admin/theater/${item._id}`} state={item._id}>Xem thêm</Link>
                         </div>
                     </div>
                 </div>)

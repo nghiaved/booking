@@ -40,6 +40,9 @@ export default function Read() {
                                 <div onClick={() => deleteMovie(item._id)} className="feature">
                                     Xoá
                                 </div>
+                                <div className="feature">
+                                    <Link to={`/admin/movie/${item._id}`} state={item._id}>Xem thêm</Link>
+                                </div>
                             </div>
                         </div>
                         <div className="title">{item.title}</div>

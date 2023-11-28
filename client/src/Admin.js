@@ -12,6 +12,8 @@ import TheaterUpdate from './pages/admin/theater/Update'
 import ShowtimeCreate from './pages/admin/showtime/Create'
 import ShowtimeRead from './pages/admin/showtime/Read'
 import ShowtimeUpdate from './pages/admin/showtime/Update'
+import MovieDetail from './pages/MovieDetail'
+import TheaterDetail from './pages/TheaterDetail'
 
 export default function Admin() {
     return (
@@ -22,9 +24,11 @@ export default function Admin() {
                 <Routes>
                     <Route path='/' element={<HomePage />} />
                     <Route path='/movie/' element={<MovieRead />} />
+                    <Route path='/movie/:id' element={<div className='app-wrapper'><MovieDetail /></div>} />
                     <Route path='/movie/create' element={<MovieCreate />} />
                     <Route path='/movie/update' element={<MovieUpdate />} />
                     <Route path='/theater/' element={<TheaterRead />} />
+                    <Route path='/theater/:id' element={<div className='app-wrapper'><TheaterDetail /></div>} />
                     <Route path='/theater/create' element={<TheaterCreate />} />
                     <Route path='/theater/update' element={<TheaterUpdate />} />
                     <Route path='/showtime/' element={<ShowtimeRead />} />

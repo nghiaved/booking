@@ -4,6 +4,7 @@ import { apiTheaterRead } from '../services'
 
 function Theaters({ isHome }) {
     const [theaters, setTheaters] = useState([])
+    const [search, setSearch] = useState('')
 
     useEffect(() => {
         fetchData()
@@ -17,20 +18,26 @@ function Theaters({ isHome }) {
     }
 
     return (
-        <div className="theater-wrapper">
-            {theaters && theaters.map(item =>
-                <div key={item._id} className="item-wrapper">
-                    <div className="item">
-                        <img src={item.image} alt="" />
-                        <div className="title">
-                            {item.name}
+        <div>
+            <span className='span-loc-phim'>Lọc rạp:</span>
+            <input className='input-loc-phim' onChange={e => setSearch(e.target.value)} placeholder='Tìm tên rạp chiếu' />
+            <div className="theater-wrapper">
+                {theaters && theaters.filter(item => {
+                    return search.toLowerCase() === '' ? item : item.name.toLowerCase().includes(search.toLowerCase())
+                }).map(item =>
+                    <div key={item._id} className="item-wrapper">
+                        <div className="item">
+                            <img src={item.image} alt="" />
+                            <div className="title">
+                                {item.name}
+                            </div>
+                            <div className="feature">
+                                <Link to={`/theater/${item._id}`} state={item._id}>Xem thêm</Link>
+                            </div>
                         </div>
-                        <div className="feature">
-                            <Link to={`/theater/${item._id}`} state={item._id}>Xem thêm</Link>
-                        </div>
-                    </div>
-                </div>)
-            }
+                    </div>)
+                }
+            </div>
         </div>
     );
 }

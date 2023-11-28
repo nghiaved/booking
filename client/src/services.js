@@ -60,3 +60,13 @@ export const apiShowtimeSearchMovies = id =>
 
 export const apiShowtimeSearchTheaters = id =>
     axiosClient.get('/api/showtime/search/theater?_id=' + id)
+
+//Cart
+export const apiCartCreate = data =>
+    axiosClient.post('/api/cart/create', data)
+
+export const apiCartRead = id =>
+    axiosClient.get('/api/cart/read?user=' + id)
+
+export const apiCartDelete = id =>
+    axiosClient.delete('/api/cart/delete/' + id)
